@@ -1,0 +1,20 @@
+#+TITLE: README
+* Image segmentation
+
+* Overview
+
+* Dataset
+** Preprocessing
+
+* Model architecture
+** Convolutional block
+*** Downsampling path
+*** Upsampling path
+
+** FCN8
+*** Encoder
+*** Decoder
+
+* Model evaluation
+
+* Results
