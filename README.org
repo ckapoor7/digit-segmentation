@@ -1,11 +1,14 @@
 #+TITLE: README
-* Image segmentation
-In the domain of computer vision, *image segmentation* is the process of partitioning a digital image into various /segments/ or sets of pixels to make an image easier to analyze and process. This technique is particularly useful for determining object boundaries in a given image./
-This technique assigns a *label* to each pixel and groups them together if they share same characteristic properties.
-
 * Overview
+In the domain of computer vision, *image segmentation* is the process of partitioning a digital image into various /segments/ or sets of pixels to make an image easier to analyze and process. This technique is particularly useful for determining object boundaries in a given image.\\
+This technique assigns a *label* to each pixel and groups them together if they share same characteristic properties.\\
+In this project I use the ~TensorFlow~ backend for performing the task. I have also used the *M2NIST* dataset, which can is available on [[https://www.kaggle.com/farhanhubble/multimnistm2nist][Kaggle]].
 
 * Dataset
+The *M2NIST* dataset is a popular choice for /multidigit semantic segmentation/. Since it is available in the form of ~NumPy (.npy)~ array files, preprocessing is done relatively easily. There are 2 image files in the dataset:
++ ~combined.npy~ which contains the images with multiple *MNIST* datasets
++ ~segmented.npy~ contains the segmentation masks corresponding to the combined file
+This dataset has *5000* images, each of them having dimensions ~(64x84)~. A random split of the data is performed using the corresponding ~TensorFlow~ API.
 ** Preprocessing
 
 * Model architecture
