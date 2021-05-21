@@ -1,5 +1,7 @@
 #+TITLE: README
 * Image segmentation
+In the domain of computer vision, *image segmentation* is the process of partitioning a digital image into various /segments/ or sets of pixels to make an image easier to analyze and process. This technique is particularly useful for determining object boundaries in a given image./
+This technique assigns a *label* to each pixel and groups them together if they share same characteristic properties.
 
 * Overview
 
