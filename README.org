@@ -19,8 +19,12 @@ Next, our data is split into the training and validation sets in an aribtrary sp
 * Model architecture
 The heart of my implementation lies in the model architecture that I have used. I chose to use the *FCN-8* (Fully convolutional Network) architecture for this purpose. It remains a somewhat elementary and popular choice for problems concerning /semantic segmentation/ of images.
 ** Encoder
-I have used *2* ~Conv2D~ layers, each of which is followed by an activation using the ~LeakyReLU~ function. These layers are then *max pooled* followed by *normalization*. Diagramatically, the structure of the layers looks like so:\
-~Input -> Conv2D -> LeakyReLU -> Conv2d -> LeakyReLU -> MaxPooling2D -> Batch normalization~\
+I have used *2* ~Conv2D~ layers, each of which is followed by an activation using the ~LeakyReLU~ function. These layers are then *max pooled* followed by *normalization*. Diagramatically, the structure of the layers looks like so:
+
+~Input -> Conv2D -> LeakyReLU -> Conv2d -> LeakyReLU -> MaxPooling2D -> Batch normalization~
+
+Hello world!!!
+
 ** Decoder
 
 * Model evaluation
