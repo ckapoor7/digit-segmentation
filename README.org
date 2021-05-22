@@ -22,9 +22,8 @@ The heart of my implementation lies in the model architecture that I have used. 
 \\
 The following diagram summarizes the basic picture of the entire model:
 #+CAPTION: The FCN-8 architecture
-#+ATTR_ORG: :width 600
-#+NAME: fig: SED-HR4049
-[[./fcn8.png]]
+#+NAME: fig: img-1
+[[./images/fcn8.png]]
 ** Encoder
 I have used *2* ~Conv2D~ layers, each of which is followed by an activation using the ~LeakyReLU~ function. These layers are then *max pooled* followed by *normalization*. Diagramatically, the structure of the layers looks like so:
 \\
@@ -38,5 +37,23 @@ The decoder ties together *5 convolutional building blocks* which are used for /
 An optimization (albeit /minor/) is introduced, where I have /resized/ the image to have a dimension as a *power of 2*. For this purpose, I have used the builtin API of TensorFlow: ~ZeroPadding2D~, which adds the necessary padding along the required dimensions to achieve my goal. Note that this must be done *only* along the width of the image, and not the height.
 
 * Model evaluation
+I have used 2 popular metrics for evaluating the accuracy of my model:
++ Dice score
++ Intersection Over Union (IOU)
+The name *IOU* is more or less self-explanatory, where we compute the ratio of the *area of overlap* to *area of the union* between the ground truth and predicted label maps.
+\\
+The *dice score* is somewhat similar to the *IOU* metric, with a minor difference where we introduce a *combined area* instead of the union area. A small /smoothing factor/ is introduced to the combined area term to avoid a *division by 0* error.
 
 * Results
+I trained this model for a total of *75* epochs, which achieved a decent accuracy of *99.51%*.
+#+CAPTION: FCN-8 training
+#+NAME fig: img-2
+[[./images/train.png]]
+Segmentation of an arbitrary digit set:
+#+CAPTION: segmentation
+#+NAME fig: img-3
+[[./images/segmentation.png]]
+Average IOU and dice score on the validation set:
+#+CAPTIOn: Average score
+#+NAME fig: img-4
+[[./images/av-score.png]]
