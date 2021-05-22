@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-22 Sat 18:09 -->
+<!-- 2021-05-22 Sat 18:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>README</title>
@@ -223,25 +223,25 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org47ba270">1. Overview</a></li>
-<li><a href="#org699328a">2. Dataset</a>
+<li><a href="#orgcc2847e">1. Overview</a></li>
+<li><a href="#orgaa293ba">2. Dataset</a>
 <ul>
-<li><a href="#orge564310">2.1. Preprocessing</a></li>
+<li><a href="#orgb11583f">2.1. Preprocessing</a></li>
 </ul>
 </li>
-<li><a href="#org0438666">3. Model architecture</a>
+<li><a href="#orgadf8392">3. Model architecture</a>
 <ul>
-<li><a href="#org917721b">3.1. Encoder</a></li>
-<li><a href="#org99fb422">3.2. Decoder</a></li>
+<li><a href="#orgb4f8340">3.1. Encoder</a></li>
+<li><a href="#org9c9a54b">3.2. Decoder</a></li>
 </ul>
 </li>
-<li><a href="#orgfde8cd3">4. Model evaluation</a></li>
-<li><a href="#org2464a3e">5. Results</a></li>
+<li><a href="#orgcf3302f">4. Model evaluation</a></li>
+<li><a href="#org56132c0">5. Results</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org47ba270" class="outline-2">
-<h2 id="org47ba270"><span class="section-number-2">1</span> Overview</h2>
+<div id="outline-container-orgcc2847e" class="outline-2">
+<h2 id="orgcc2847e"><span class="section-number-2">1</span> Overview</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 In the domain of computer vision, <b>image segmentation</b> is the process of partitioning a digital image into various <i>segments</i> or sets of pixels to make an image easier to analyze and process. This technique is particularly useful for determining object boundaries in a given image.
@@ -253,8 +253,8 @@ In this project I use the <code>TensorFlow</code> backend for performing the tas
 </div>
 
 
-<div id="outline-container-org699328a" class="outline-2">
-<h2 id="org699328a"><span class="section-number-2">2</span> Dataset</h2>
+<div id="outline-container-orgaa293ba" class="outline-2">
+<h2 id="orgaa293ba"><span class="section-number-2">2</span> Dataset</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 The <b>M2NIST</b> dataset is a popular choice for <i>multidigit semantic segmentation</i>. Since it is available in the form of <code>NumPy (.npy)</code> array files, preprocessing is done relatively easily. There are 2 image files in the dataset:
@@ -267,19 +267,20 @@ The <b>M2NIST</b> dataset is a popular choice for <i>multidigit semantic segment
 This dataset has <b>5000</b> images, each of them having dimensions <code>(64x84)</code>. A random split of the data is performed using the corresponding <code>TensorFlow</code> API.
 </p>
 </div>
-<div id="outline-container-orge564310" class="outline-3">
-<h3 id="orge564310"><span class="section-number-3">2.1</span> Preprocessing</h3>
+<div id="outline-container-orgb11583f" class="outline-3">
+<h3 id="orgb11583f"><span class="section-number-3">2.1</span> Preprocessing</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-The data is processed in <b>batches</b> with each one containing <b>32</b> images. Each of the images in our dataset is cast into the datatype <code>float32</code> whilst normalizing the pixel values across the RGB channels of the image. \
+The data is processed in <b>batches</b> with each one containing <b>32</b> images. Each of the images in our dataset is cast into the datatype <code>float32</code> whilst normalizing the pixel values across the RGB channels of the image.
+<br />
 Next, our data is split into the training and validation sets in an aribtrary split ratio that I chose to be <code>80:20</code> (for both the images and the corresponding annotations).
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0438666" class="outline-2">
-<h2 id="org0438666"><span class="section-number-2">3</span> Model architecture</h2>
+<div id="outline-container-orgadf8392" class="outline-2">
+<h2 id="orgadf8392"><span class="section-number-2">3</span> Model architecture</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 The heart of my implementation lies in the model architecture that I have used. I chose to use the <b>FCN-8</b> (Fully convolutional Network) architecture for this purpose. It remains a somewhat elementary and popular choice for problems concerning <i>semantic segmentation</i> of images.
@@ -287,26 +288,29 @@ The heart of my implementation lies in the model architecture that I have used. 
 The following diagram summarizes the basic picture of the entire model:
 </p>
 
-<div id="org8d230db" class="figure">
-<p><img src="./fcn8.png " alt="fcn8.png " />
+<div id="org7fc41a4" class="figure">
+<p><img src="./fcn8.png" alt="fcn8.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>The FCN-8 architecture</p>
 </div>
 </div>
-<div id="outline-container-org917721b" class="outline-3">
-<h3 id="org917721b"><span class="section-number-3">3.1</span> Encoder</h3>
+<div id="outline-container-orgb4f8340" class="outline-3">
+<h3 id="orgb4f8340"><span class="section-number-3">3.1</span> Encoder</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 I have used <b>2</b> <code>Conv2D</code> layers, each of which is followed by an activation using the <code>LeakyReLU</code> function. These layers are then <b>max pooled</b> followed by <b>normalization</b>. Diagramatically, the structure of the layers looks like so:
 <br />
 <code>Input -&gt; Conv2D -&gt; LeakyReLU -&gt; Conv2d -&gt; LeakyReLU -&gt; MaxPooling2D -&gt; Batch normalization</code>
-<br />
+</p>
+
+<p>
 This summarizes the building block of our encoder.
 </p>
 </div>
 </div>
-<div id="outline-container-org99fb422" class="outline-3">
-<h3 id="org99fb422"><span class="section-number-3">3.2</span> Decoder</h3>
+
+<div id="outline-container-org9c9a54b" class="outline-3">
+<h3 id="org9c9a54b"><span class="section-number-3">3.2</span> Decoder</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 The decoder ties together <b>5 convolutional building blocks</b> which are used for <i>feature extraction</i> (apart from the fully connected layers).
@@ -317,17 +321,17 @@ An optimization (albeit <i>minor</i>) is introduced, where I have <i>resized</i>
 </div>
 </div>
 
-<div id="outline-container-orgfde8cd3" class="outline-2">
-<h2 id="orgfde8cd3"><span class="section-number-2">4</span> Model evaluation</h2>
+<div id="outline-container-orgcf3302f" class="outline-2">
+<h2 id="orgcf3302f"><span class="section-number-2">4</span> Model evaluation</h2>
 </div>
 
-<div id="outline-container-org2464a3e" class="outline-2">
-<h2 id="org2464a3e"><span class="section-number-2">5</span> Results</h2>
+<div id="outline-container-org56132c0" class="outline-2">
+<h2 id="org56132c0"><span class="section-number-2">5</span> Results</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Chaitanya Kapoor</p>
-<p class="date">Created: 2021-05-22 Sat 18:09</p>
+<p class="date">Created: 2021-05-22 Sat 18:13</p>
 </div>
 </body>
 </html>

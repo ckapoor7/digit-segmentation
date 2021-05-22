@@ -24,8 +24,7 @@ The following diagram summarizes the basic picture of the entire model:
 #+CAPTION: The FCN-8 architecture
 #+ATTR_ORG: :width 600
 #+NAME: fig: SED-HR4049
-[[fcn8.png
-]]
+[[./fcn8.png]]
 ** Encoder
 I have used *2* ~Conv2D~ layers, each of which is followed by an activation using the ~LeakyReLU~ function. These layers are then *max pooled* followed by *normalization*. Diagramatically, the structure of the layers looks like so:
 \\
