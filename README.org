@@ -13,7 +13,8 @@ The *M2NIST* dataset is a popular choice for /multidigit semantic segmentation/.
 This dataset has *5000* images, each of them having dimensions ~(64x84)~. A random split of the data is performed using the corresponding ~TensorFlow~ API.
 ** Preprocessing
 
-The data is processed in *batches* with each one containing *32* images. Each of the images in our dataset is cast into the datatype ~float32~ whilst normalizing the pixel values across the RGB channels of the image. \
+The data is processed in *batches* with each one containing *32* images. Each of the images in our dataset is cast into the datatype ~float32~ whilst normalizing the pixel values across the RGB channels of the image.
+\\
 Next, our data is split into the training and validation sets in an aribtrary split ratio that I chose to be ~80:20~ (for both the images and the corresponding annotations).
 
 * Model architecture
@@ -23,14 +24,15 @@ The following diagram summarizes the basic picture of the entire model:
 #+CAPTION: The FCN-8 architecture
 #+ATTR_ORG: :width 600
 #+NAME: fig: SED-HR4049
-[[./fcn8.png
+[[fcn8.png
 ]]
 ** Encoder
 I have used *2* ~Conv2D~ layers, each of which is followed by an activation using the ~LeakyReLU~ function. These layers are then *max pooled* followed by *normalization*. Diagramatically, the structure of the layers looks like so:
 \\
 ~Input -> Conv2D -> LeakyReLU -> Conv2d -> LeakyReLU -> MaxPooling2D -> Batch normalization~
-\\
+
 This summarizes the building block of our encoder.
+
 ** Decoder
 The decoder ties together *5 convolutional building blocks* which are used for /feature extraction/ (apart from the fully connected layers).
 \\
