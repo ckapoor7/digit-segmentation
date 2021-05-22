@@ -1,18 +1,18 @@
 
 # Table of Contents
 
-1.  [Overview](#orge5cdfe6)
-2.  [Dataset](#org1508211)
-    1.  [Preprocessing](#org6204ea1)
-3.  [Model architecture](#org458e17b)
-    1.  [Encoder](#orgfeaab07)
-    2.  [Decoder](#org0b17ffc)
-4.  [Model evaluation](#orgfb68214)
-5.  [Results](#org5b4ef50)
+1.  [Overview](#org51650e4)
+2.  [Dataset](#org925d821)
+    1.  [Preprocessing](#orgfcece06)
+3.  [Model architecture](#org5b4f850)
+    1.  [Encoder](#orgcef3145)
+    2.  [Decoder](#org186a360)
+4.  [Model evaluation](#orgc6284fa)
+5.  [Results](#org0fec3fe)
 
 
 
-<a id="orge5cdfe6"></a>
+<a id="org51650e4"></a>
 
 # Overview
 
@@ -22,7 +22,7 @@ This technique assigns a **label** to each pixel and groups them together if the
 In this project I use the `TensorFlow` backend for performing the task. I have also used the **M2NIST** dataset, which can is available on [Kaggle](https://www.kaggle.com/farhanhubble/multimnistm2nist).
 
 
-<a id="org1508211"></a>
+<a id="org925d821"></a>
 
 # Dataset
 
@@ -34,7 +34,7 @@ The **M2NIST** dataset is a popular choice for *multidigit semantic segmentation
 This dataset has **5000** images, each of them having dimensions `(64x84)`. A random split of the data is performed using the corresponding `TensorFlow` API.
 
 
-<a id="org6204ea1"></a>
+<a id="orgfcece06"></a>
 
 ## Preprocessing
 
@@ -43,7 +43,7 @@ The data is processed in **batches** with each one containing **32** images. Eac
 Next, our data is split into the training and validation sets in an aribtrary split ratio that I chose to be `80:20` (for both the images and the corresponding annotations).
 
 
-<a id="org458e17b"></a>
+<a id="org5b4f850"></a>
 
 # Model architecture
 
@@ -54,7 +54,7 @@ The following diagram summarizes the basic picture of the entire model:
 ![img](./images/fcn8.png "The FCN-8 architecture")
 
 
-<a id="orgfeaab07"></a>
+<a id="orgcef3145"></a>
 
 ## Encoder
 
@@ -65,7 +65,7 @@ I have used **2** `Conv2D` layers, each of which is followed by an activation us
 This summarizes the building block of our encoder.
 
 
-<a id="org0b17ffc"></a>
+<a id="org186a360"></a>
 
 ## Decoder
 
@@ -74,7 +74,7 @@ The decoder ties together **5 convolutional building blocks** which are used for
 An optimization (albeit *minor*) is introduced, where I have *resized* the image to have a dimension as a **power of 2**. For this purpose, I have used the builtin API of TensorFlow: `ZeroPadding2D`, which adds the necessary padding along the required dimensions to achieve my goal. Note that this must be done **only** along the width of the image, and not the height.
 
 
-<a id="orgfb68214"></a>
+<a id="orgc6284fa"></a>
 
 # Model evaluation
 
@@ -88,20 +88,17 @@ The name **IOU** is more or less self-explanatory, where we compute the ratio of
 The **dice score** is somewhat similar to the **IOU** metric, with a minor difference where we introduce a **combined area** instead of the union area. A small *smoothing factor* is introduced to the combined area term to avoid a **division by 0** error.
 
 
-<a id="org5b4ef50"></a>
+<a id="org0fec3fe"></a>
 
 # Results
 
 I trained this model for a total of **75** epochs, which achieved a decent accuracy of **99.51%**.
 
-\#+NAME fig: img-2
 ![img](./images/train.png "FCN-8 training")
 Segmentation of an arbitrary digit set:
 
-\#+NAME fig: img-3
 ![img](./images/segmentation.png "segmentation")
 Average IOU and dice score on the validation set:
 
-\#+NAME fig: img-4
 ![img](./images/av-score.png "Average score")
 

@@ -47,13 +47,13 @@ The *dice score* is somewhat similar to the *IOU* metric, with a minor differenc
 * Results
 I trained this model for a total of *75* epochs, which achieved a decent accuracy of *99.51%*.
 #+CAPTION: FCN-8 training
-#+NAME fig: img-2
+#+NAME: fig: img-2
 [[./images/train.png]]
 Segmentation of an arbitrary digit set:
 #+CAPTION: segmentation
-#+NAME fig: img-3
+#+NAME: fig: img-3
 [[./images/segmentation.png]]
 Average IOU and dice score on the validation set:
-#+CAPTIOn: Average score
-#+NAME fig: img-4
+#+CAPTION: Average score
+#+NAME: fig: img-4
 [[./images/av-score.png]]
