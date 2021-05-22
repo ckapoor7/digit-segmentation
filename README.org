@@ -1,7 +1,9 @@
 #+TITLE: README
 * Overview
-In the domain of computer vision, *image segmentation* is the process of partitioning a digital image into various /segments/ or sets of pixels to make an image easier to analyze and process. This technique is particularly useful for determining object boundaries in a given image.\\
-This technique assigns a *label* to each pixel and groups them together if they share same characteristic properties.\\
+In the domain of computer vision, *image segmentation* is the process of partitioning a digital image into various /segments/ or sets of pixels to make an image easier to analyze and process. This technique is particularly useful for determining object boundaries in a given image.
+\\
+This technique assigns a *label* to each pixel and groups them together if they share same characteristic properties.
+\\
 In this project I use the ~TensorFlow~ backend for performing the task. I have also used the *M2NIST* dataset, which can is available on [[https://www.kaggle.com/farhanhubble/multimnistm2nist][Kaggle]].
 
 * Dataset
@@ -23,3 +25,38 @@ This dataset has *5000* images, each of them having dimensions ~(64x84)~. A rand
 * Model evaluation
 
 * Results
+
+* Test
+#+BEGIN_LaTeX
+% Created by tikzDevice version 0.6.2 on 2012-02-08 21:28:07
+% !TEX encoding = UTF-8 Unicode
+\begin{tikzpicture}[x=1pt,y=1pt]
+\definecolor[named]{drawColor}{rgb}{0.00,0.00,0.00}
+\definecolor[named]{fillColor}{rgb}{1.00,1.00,1.00}
+\fill[color=fillColor,fill opacity=0.00,] (0,0) rectangle (289.08,289.08);
+\begin{scope}
+\path[clip] ( 49.20, 61.20) rectangle (263.88,239.88);
+\definecolor[named]{drawColor}{rgb}{0.00,0.00,0.00}
+\draw[color=drawColor,line cap=round,line join=round,fill opacity=0.00,] (184.34, 99.14) circle (  2.25);
+
+
+\draw[color=drawColor,line cap=round,line join=round,fill opacity=0.00,] (143.44,134.70) circle (  2.25);
+\end{scope}
+\begin{scope}
+\path[clip] (  0.00,  0.00) rectangle (289.08,289.08);
+\definecolor[named]{drawColor}{rgb}{0.00,0.00,0.00}
+
+\draw[color=drawColor,line cap=round,line join=round,fill opacity=0.00,] ( 75.29, 61.20) -- (250.80, 61.20);
+
+
+\end{scope}
+\begin{scope}
+\path[clip] (  0.00,  0.00) rectangle (289.08,289.08);
+\definecolor[named]{drawColor}{rgb}{0.00,0.00,0.00}
+
+\node[color=drawColor,anchor=base,inner sep=0pt, outer sep=0pt, scale=  1.00] at (156.54, 13.20) {rnorm(100)};
+
+\node[rotate= 90.00,color=drawColor,anchor=base,inner sep=0pt, outer sep=0pt, scale=  1.00] at ( 13.20,150.54) {rnorm(100)};
+\end{scope}
+\end{tikzpicture}
+#+END_LaTeX
